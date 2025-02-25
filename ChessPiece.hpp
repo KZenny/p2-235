@@ -12,6 +12,24 @@
 class ChessPiece {
     protected:
       static const int BOARD_LENGTH = 8; // A constant value representing the number of rows & columns on the chessboard
+      /**
+      * @brief Sets the size of the chess piece.
+      * @param size An integer representing the new size of the chess piece.
+      * @note This method does not validate pre-conditions 
+      *       (e.g., checking for negative sizes).
+      * @post The size_ member of the ChessPiece is overridden. No value is returned.
+      */
+      void setSize(const int& size);
+
+      /**
+      * @brief Sets the type of the chess piece.
+      * @param type A const reference to a string representing the new type of the chess piece 
+      *      (e.g., "ROOK", "PAWN", "NONE").
+      * @note This method does not validate pre-conditions 
+      *      (e.g., checking for caps or symbols in the type string).
+      * @post The type_ member of the ChessPiece is overridden. No value is returned.
+      */
+      void setType(const std::string& type);
 
    private:
       std::string color_;  // An uppercase, alphabetic string representing the color of the chess piece.
@@ -33,6 +51,8 @@ class ChessPiece {
       int row_;               // An integer corresponding to the row position of the chess piece
       int column_;            // An integer corresponding to the column position of the chess piece
       bool movingUp_;         // A boolean representing whether the piece is moving up the board (in reference to the visual above)
+      int piece_size_;        // An integer representing the size of the current chess piece
+      std::string type_;      // A string representing the type of the current chess piece
 
    public:
 
@@ -57,9 +77,13 @@ class ChessPiece {
     * @param : A flag indicating whether the Chess Piece is moving up on the board, or not (as a const reference to a boolean). Default value false if not provided.
     * @post : The private members are set to the values of the corresponding parameters. 
     *   If either of row or col are out-of-bounds and set to -1, the other is also set to -1 (regardless of being in-bounds or not).
+    * ADDITIONS:
+    * @param : An integer representing the size of the current chess piece. 
+    *          Default value 0.
+    * @param : A string representing the type of the current chess piece. 
+    *          Default value "NONE". 
     */
-
-    ChessPiece(const std::string& color, const int& row = -1, const int& col = -1, const bool& movingUp = false);
+    ChessPiece(const std::string& color, const int& row = -1, const int& col = -1, const bool& movingUp = false, const int& size = 0, const std::string& type = "NONE");
 
     // =============== Getters and Setters ===============
 
@@ -126,4 +150,16 @@ class ChessPiece {
      * @note "\n" just means endline in this case. Please use "std::endl," don't hardcode "\n".
      */
     void display() const;
-};
+
+    /**
+     * @brief Getter for the piece_size_ data member
+     * @return The integer value stored in piece_size_
+     */
+     int size() const;
+
+    /**
+     * @brief Getter for the type_ data member
+     * @return The string value stored in type_
+     */
+   std::string getType() const;
+}; 

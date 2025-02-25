@@ -12,6 +12,9 @@ class Rook : public ChessPiece {
         /**
          * @brief Default Constructor. By default, Rooks have 3 available castle moves to make
          * @note Remember to default construct the base-class as well
+         * ADDITIONS: 
+         * 1) The piece_size_ member is set to 2
+         * 2) The type member is set to "ROOK"
          */
         Rook();
 
@@ -26,6 +29,9 @@ class Rook : public ChessPiece {
         * @param : An integer representing how many castle moves it can make. Default to 3 if no value provided.
         * @post : The private members are set to the values of the corresponding parameters. 
         *   If either of row or col are out-of-bounds and set to -1, the other is also set to -1 (regardless of being in-bounds or not).
+        * ADDITIONS: 
+        * 1) The piece_size_ member is set to 2
+        * 2) The type member is set to "ROOK"
         */
         Rook(const std::string& color, const int& row = -1, const int& col = -1, const bool& movingUp = false, const int& castle_move_capacity = 3);
 

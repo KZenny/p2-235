@@ -3,8 +3,14 @@
 /**
  * @brief Default Constructor. All boolean values are default initialized to false.
  * @note Remember to construct the base-class as well
+ * ADDITIONS: 
+ * 1) The piece_size_ member is set to 1
+ * 2) The type member is set to "PAWN"
  */
-Pawn::Pawn() : ChessPiece(), double_jumpable_{false} {}
+Pawn::Pawn() : ChessPiece(), double_jumpable_{false} {
+    setSize(1);
+    setType("PAWN");
+}
 
 /**
 * @brief Parameterized constructor.
@@ -16,9 +22,15 @@ Pawn::Pawn() : ChessPiece(), double_jumpable_{false} {}
 * @param : A flag indicating whether the Pawn can double jump two spaces forward or not (as a const reference to a boolean). Default value false if not provided.
 * @post : The private members are set to the values of the corresponding parameters. 
 *   If either of row or col are out-of-bounds and set to -1, the other is also set to -1 (regardless of being in-bounds or not).
+* ADDITIONS: 
+* 1) The piece_size_ member is set to 1
+* 2) The type member is set to "PAWN"
 */
 Pawn::Pawn(const std::string& color, const int& row, const int& col, const bool& movingUp, const bool& double_jumpable) :
-    ChessPiece(color, row, col, movingUp), double_jumpable_{double_jumpable} {}
+    ChessPiece(color, row, col, movingUp), double_jumpable_{double_jumpable} {
+        setSize(1);
+        setType("PAWN");
+    }
 
 /**
  * @brief Gets the value of the flag for the Pawn can double jump

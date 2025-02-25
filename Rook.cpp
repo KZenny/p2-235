@@ -3,8 +3,14 @@
 /**
  * @brief Default Constructor. By default, Rooks have 3 available castle moves to make
  * @note Remember to default construct the base-class as well
+ * ADDITIONS: 
+ * 1) The piece_size_ member is set to 2
+ * 2) The type member is set to "ROOK"
  */
-Rook::Rook() : ChessPiece(), castle_moves_left_{3} {}
+Rook::Rook() : ChessPiece(), castle_moves_left_{3} {
+    setSize(2);
+    setType("ROOK");
+}
 
 /**
 * @brief Parameterized constructor. Rememeber to use the arguments to construct the underlying ChessPiece.
@@ -16,9 +22,15 @@ Rook::Rook() : ChessPiece(), castle_moves_left_{3} {}
 * @param : An integer representing how many castle moves it can make. Default to 3 if no value provided. If a negative value is provided, 0 is used instead.
 * @post : The private members are set to the values of the corresponding parameters. 
 *   If either of row or col are out-of-bounds and set to -1, the other is also set to -1 (regardless of being in-bounds or not).
+* ADDITIONS: 
+* 1) The piece_size_ member is set to 2
+* 2) The type member is set to "ROOK"
 */
 Rook::Rook(const std::string& color, const int& row, const int& col, const bool& movingUp, const int& castle_moves_capacity) :
-    ChessPiece(color, row, col, movingUp), castle_moves_left_{ std::max(0, castle_moves_capacity) } {}
+    ChessPiece(color, row, col, movingUp), castle_moves_left_{ std::max(0, castle_moves_capacity) } {
+        setSize(2);
+        setType("ROOK");
+    }
 
 /**
  * @brief Gets the value of the castle_moves_left_

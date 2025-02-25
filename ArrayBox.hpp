@@ -32,6 +32,7 @@ class ArrayBox {
         int getIndexOf(const std::string& type, int start, int end) const;
 
     public:
+    
         /**
         * @brief Default constructor
         * @post Initializes capacity_ to 64 and size_ to 0. 
@@ -46,6 +47,8 @@ class ArrayBox {
         * @post size_ is initialized to 0. items_ is initialized to a dynamically allocated array of length equal to 'capacity'
         */
         ArrayBox(const int& capacity);
+
+        void displayArray() const;
 
         /**
          * @brief Appends the parameter item to the `items_` array such that:
@@ -72,7 +75,7 @@ class ArrayBox {
                 size = 7
             After this, when we tried addItem(Rook), the add would fail.
         */
-        bool addItem(const T& target);
+        bool addItem(const T& type);
 
         /**
         * @brief Removes the first instance in `items_` of an object whose `getType()` equals the parameter given
