@@ -80,15 +80,15 @@ ChessBox::ChessBox(const std::string& color1, const std::string& color2, int cap
   *
   */
 bool ChessBox::addPiece(const ChessPiece& piece){
-  if (piece.getColor() == P1_COLOR_ && P1_BOX_.size() + piece.size() > P1_BOX_.capacity()) { //Checks if piece color matches P1_COLOR_ and P1_BOX_ has enough space to add piece
+  if (piece.getColor() == P1_COLOR_ && P1_BOX_.size() + piece.size() <= P1_BOX_.capacity()) { //Checks if piece color matches P1_COLOR_ and P1_BOX_ has enough space to add piece
     P1_BOX_.addItem(piece);
     return true;
-  } else if (piece.getColor() == P2_COLOR_ && P2_BOX_.size() + piece.size() > P2_BOX_.capacity()) { //Checks if piece color matches P2_COLOR_ and P2_BOX_ has enough space to add piece
+  } else if (piece.getColor() == P2_COLOR_ && P2_BOX_.size() + piece.size() <= P2_BOX_.capacity()) { //Checks if piece color matches P2_COLOR_ and P2_BOX_ has enough space to add piece
     P2_BOX_.addItem(piece);
     return true;
-  } else { //Piece color does not match either box or not enough space within the corresponding box. 
-    return false;
-  }
+  }  
+  return false;//Piece color does not match either box or not enough space within the corresponding box. 
+  
 }  
 
  
@@ -100,13 +100,13 @@ bool ChessBox::addPiece(const ChessPiece& piece){
   * @return True if a piece is found and removed. False otherwise. 
   */
 bool ChessBox::removePiece(const std::string& type, const std::string& color){
-  if(P1_COLOR_ == color && P1_BOX_.contains(type)){ 
+  if(P1_COLOR_ == color){ 
     return P1_BOX_.remove(type);
-  } else if (P2_COLOR_ == color && P2_BOX_.contains(type)){
+  } else if (P2_COLOR_ == color){
     return P2_BOX_.remove(type);
-  } else {
-    return false; 
-  }
+  } 
+  return false; 
+  
 }
  
  /**
